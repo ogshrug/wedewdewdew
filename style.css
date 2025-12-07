@@ -67,6 +67,19 @@ button:hover {
     background-color: #1ED760;
 }
 
+#skip-button {
+    background-color: #535353;
+}
+
+#skip-button:hover {
+    background-color: #636363;
+}
+
+button:disabled {
+    background-color: #282828;
+    cursor: not-allowed;
+}
+
 #feedback {
     margin-top: 1em;
     font-size: 1.2em;
