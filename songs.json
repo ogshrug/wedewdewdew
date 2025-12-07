@@ -1,52 +1,302 @@
 [
-  { "id": 1, "audioPath": "/songs/snippet_001.mp3", "title": "Song Title 1", "artist": "Artist Name 1" },
-  { "id": 2, "audioPath": "/songs/snippet_002.mp3", "title": "Song Title 2", "artist": "Artist Name 2" },
-  { "id": 3, "audioPath": "/songs/snippet_003.mp3", "title": "Song Title 3", "artist": "Artist Name 3" },
-  { "id": 4, "audioPath": "/songs/snippet_004.mp3", "title": "Song Title 4", "artist": "Artist Name 4" },
-  { "id": 5, "audioPath": "/songs/snippet_005.mp3", "title": "Song Title 5", "artist": "Artist Name 5" },
-  { "id": 6, "audioPath": "/songs/snippet_006.mp3", "title": "Song Title 6", "artist": "Artist Name 6" },
-  { "id": 7, "audioPath": "/songs/snippet_007.mp3", "title": "Song Title 7", "artist": "Artist Name 7" },
-  { "id": 8, "audioPath": "/songs/snippet_008.mp3", "title": "Song Title 8", "artist": "Artist Name 8" },
-  { "id": 9, "audioPath": "/songs/snippet_009.mp3", "title": "Song Title 9", "artist": "Artist Name 9" },
-  { "id": 10, "audioPath": "/songs/snippet_010.mp3", "title": "Song Title 10", "artist": "Artist Name 10" },
-  { "id": 11, "audioPath": "/songs/snippet_011.mp3", "title": "Song Title 11", "artist": "Artist Name 11" },
-  { "id": 12, "audioPath": "/songs/snippet_012.mp3", "title": "Song Title 12", "artist": "Artist Name 12" },
-  { "id": 13, "audioPath": "/songs/snippet_013.mp3", "title": "Song Title 13", "artist": "Artist Name 13" },
-  { "id": 14, "audioPath": "/songs/snippet_014.mp3", "title": "Song Title 14", "artist": "Artist Name 14" },
-  { "id": 15, "audioPath": "/songs/snippet_015.mp3", "title": "Song Title 15", "artist": "Artist Name 15" },
-  { "id": 16, "audioPath": "/songs/snippet_016.mp3", "title": "Song Title 16", "artist": "Artist Name 16" },
-  { "id": 17, "audioPath": "/songs/snippet_017.mp3", "title": "Song Title 17", "artist": "Artist Name 17" },
-  { "id": 18, "audioPath": "/songs/snippet_018.mp3", "title": "Song Title 18", "artist": "Artist Name 18" },
-  { "id": 19, "audioPath": "/songs/snippet_019.mp3", "title": "Song Title 19", "artist": "Artist Name 19" },
-  { "id": 20, "audioPath": "/songs/snippet_020.mp3", "title": "Song Title 20", "artist": "Artist Name 20" },
-  { "id": 21, "audioPath": "/songs/snippet_021.mp3", "title": "Song Title 21", "artist": "Artist Name 21" },
-  { "id": 22, "audioPath": "/songs/snippet_022.mp3", "title": "Song Title 22", "artist": "Artist Name 22" },
-  { "id": 23, "audioPath": "/songs/snippet_023.mp3", "title": "Song Title 23", "artist": "Artist Name 23" },
-  { "id": 24, "audioPath": "/songs/snippet_024.mp3", "title": "Song Title 24", "artist": "Artist Name 24" },
-  { "id": 25, "audioPath": "/songs/snippet_025.mp3", "title": "Song Title 25", "artist": "Artist Name 25" },
-  { "id": 26, "audioPath": "/songs/snippet_026.mp3", "title": "Song Title 26", "artist": "Artist Name 26" },
-  { "id": 27, "audioPath": "/songs/snippet_027.mp3", "title": "Song Title 27", "artist": "Artist Name 27" },
-  { "id": 28, "audioPath": "/songs/snippet_028.mp3", "title": "Song Title 28", "artist": "Artist Name 28" },
-  { "id": 29, "audioPath": "/songs/snippet_029.mp3", "title": "Song Title 29", "artist": "Artist Name 29" },
-  { "id": 30, "audioPath": "/songs/snippet_030.mp3", "title": "Song Title 30", "artist": "Artist Name 30" },
-  { "id": 31, "audioPath": "/songs/snippet_031.mp3", "title": "Song Title 31", "artist": "Artist Name 31" },
-  { "id": 32, "audioPath": "/songs/snippet_032.mp3", "title": "Song Title 32", "artist": "Artist Name 32" },
-  { "id": 33, "audioPath": "/songs/snippet_033.mp3", "title": "Song Title 33", "artist": "Artist Name 33" },
-  { "id": 34, "audioPath": "/songs/snippet_034.mp3", "title": "Song Title 34", "artist": "Artist Name 34" },
-  { "id": 35, "audioPath": "/songs/snippet_035.mp3", "title": "Song Title 35", "artist": "Artist Name 35" },
-  { "id": 36, "audioPath": "/songs/snippet_036.mp3", "title": "Song Title 36", "artist": "Artist Name 36" },
-  { "id": 37, "audioPath": "/songs/snippet_037.mp3", "title": "Song Title 37", "artist": "Artist Name 37" },
-  { "id": 38, "audioPath": "/songs/snippet_038.mp3", "title": "Song Title 38", "artist": "Artist Name 38" },
-  { "id": 39, "audioPath": "/songs/snippet_039.mp3", "title": "Song Title 39", "artist": "Artist Name 39" },
-  { "id": 40, "audioPath": "/songs/snippet_040.mp3", "title": "Song Title 40", "artist": "Artist Name 40" },
-  { "id": 41, "audioPath": "/songs/snippet_041.mp3", "title": "Song Title 41", "artist": "Artist Name 41" },
-  { "id": 42, "audioPath": "/songs/snippet_042.mp3", "title": "Song Title 42", "artist": "Artist Name 42" },
-  { "id": 43, "audioPath": "/songs/snippet_043.mp3", "title": "Song Title 43", "artist": "Artist Name 43" },
-  { "id": 44, "audioPath": "/songs/snippet_044.mp3", "title": "Song Title 44", "artist": "Artist Name 44" },
-  { "id": 45, "audioPath": "/songs/snippet_045.mp3", "title": "Song Title 45", "artist": "Artist Name 45" },
-  { "id": 46, "audioPath": "/songs/snippet_046.mp3", "title": "Song Title 46", "artist": "Artist Name 46" },
-  { "id": 47, "audioPath": "/songs/snippet_047.mp3", "title": "Song Title 47", "artist": "Artist Name 47" },
-  { "id": 48, "audioPath": "/songs/snippet_048.mp3", "title": "Song Title 48", "artist": "Artist Name 48" },
-  { "id": 49, "audioPath": "/songs/snippet_049.mp3", "title": "Song Title 49", "artist": "Artist Name 49" },
-  { "id": 50, "audioPath": "/songs/snippet_050.mp3", "title": "Song Title 50", "artist": "Artist Name 50" }
+  {
+    "id": 1,
+    "audioPath": "/songs/song01.mp3",
+    "title": "Chittiyaan Kalaiyaan",
+    "artist": "Kanika Kapoor"
+  },
+  {
+    "id": 2,
+    "audioPath": "/songs/song02.mp3",
+    "title": "NOKIA",
+    "artist": "Drake"
+  },
+  {
+    "id": 3,
+    "audioPath": "/songs/song03.mp3",
+    "title": "Dance Basanti",
+    "artist": "Vishal Dadlani, Anushka Manchanda"
+  },
+  {
+    "id": 4,
+    "audioPath": "/songs/song04.mp3",
+    "title": "Dilliwaali Girlfriend",
+    "artist": "Arijit Singh, Sunidhi Chauhan"
+  },
+  {
+    "id": 5,
+    "audioPath": "/songs/song05.mp3",
+    "title": "Badtameez Dil",
+    "artist": "Benny Dayal, Shefali Alvares"
+  },
+  {
+    "id": 6,
+    "audioPath": "/songs/song06.mp3",
+    "title": "Balam Pichkari",
+    "artist": "Vishal Dadlani, Shalmali Kholgade"
+  },
+  {
+    "id": 7,
+    "audioPath": "/songs/song07.mp3",
+    "title": "London Thumakda",
+    "artist": "Labh Janjua, Sonu Kakkar, Neha Kakkar"
+  },
+  {
+    "id": 8,
+    "audioPath": "/songs/song08.mp3",
+    "title": "Subha Hone Na De",
+    "artist": "Mika Singh, Shefali Alvares"
+  },
+  {
+    "id": 9,
+    "audioPath": "/songs/song09.mp3",
+    "title": "Gallan Goodiyaan",
+    "artist": "Yashita Sharma, Manish Kumar Tipu"
+  },
+  {
+    "id": 10,
+    "audioPath": "/songs/song10.mp3",
+    "title": "Tu Meri",
+    "artist": "Vishal Dadlani"
+  },
+  {
+    "id": 11,
+    "audioPath": "/songs/song11.mp3",
+    "title": "Abhi Toh Party Shuru Hui Hai",
+    "artist": "Badshah, Aastha Gill"
+  },
+  {
+    "id": 12,
+    "audioPath": "/songs/song12.mp3",
+    "title": "Chaiyya Chaiyya",
+    "artist": "Sukhwinder Singh, Sapna Awasthi"
+  },
+  {
+    "id": 13,
+    "audioPath": "/songs/song13.mp3",
+    "title": "Pardesiya (From 'Param Sundari')",
+    "artist": "Sonu Nigam, Krishnakali Saha"
+  },
+  {
+    "id": 14,
+    "audioPath": "/songs/song14.mp3",
+    "title": "Ghungroo",
+    "artist": "Arijit Singh, Shilpa Rao"
+  },
+  {
+    "id": 15,
+    "audioPath": "/songs/song15.mp3",
+    "title": "Tum Hi Ho",
+    "artist": "Arijit Singh"
+  },
+  {
+    "id": 16,
+    "audioPath": "/songs/song16.mp3",
+    "title": "Dil To Pagal Hai",
+    "artist": "Lata Mangeshkar, Udit Narayan"
+  },
+  {
+    "id": 17,
+    "audioPath": "/songs/song17.mp3",
+    "title": "Raataan Lambiyan",
+    "artist": "Jubin Nautiyal, Asees Kaur"
+  },
+  {
+    "id": 18,
+    "audioPath": "/songs/song18.mp3",
+    "title": "Saiyaan",
+    "artist": "Kailash Kher"
+  },
+  {
+    "id": 19,
+    "audioPath": "/songs/song19.mp3",
+    "title": "Chura Ke Dil Mera",
+    "artist": "Kumar Sanu, Alka Yagnik"
+  },
+  {
+    "id": 20,
+    "audioPath": "/songs/song20.mp3",
+    "title": "Kal Ho Naa Ho (Title Track)",
+    "artist": "Sonu Nigam"
+  },
+  {
+    "id": 21,
+    "audioPath": "/songs/song21.mp3",
+    "title": "Shape of You",
+    "artist": "Ed Sheeran"
+  },
+  {
+    "id": 22,
+    "audioPath": "/songs/song22.mp3",
+    "title": "Lean On",
+    "artist": "Major Lazer & DJ Snake ft. MØ"
+  },
+  {
+    "id": 23,
+    "audioPath": "/songs/song23.mp3",
+    "title": "Cheap Thrills",
+    "artist": "Sia"
+  },
+  {
+    "id": 24,
+    "audioPath": "/songs/song24.mp3",
+    "title": "Faded",
+    "artist": "Alan Walker"
+  },
+  {
+    "id": 25,
+    "audioPath": "/songs/song25.mp3",
+    "title": "Take Me Home, Country Roads",
+    "artist": "John Denver"
+  },
+  {
+    "id": 26,
+    "audioPath": "/songs/song26.mp3",
+    "title": "Happier",
+    "artist": "Marshmello & Bastille"
+  },
+  {
+    "id": 27,
+    "audioPath": "/songs/song27.mp3",
+    "title": "Silence",
+    "artist": "Marshmello ft. Khalid"
+  },
+  {
+    "id": 28,
+    "audioPath": "/songs/song28.mp3",
+    "title": "Wolves",
+    "artist": "Marshmello & Selena Gomez"
+  },
+  {
+    "id": 29,
+    "audioPath": "/songs/song29.mp3",
+    "title": "Summer of '69",
+    "artist": "Bryan Adams"
+  },
+  {
+    "id": 30,
+    "audioPath": "/songs/song30.mp3",
+    "title": "Hotel California",
+    "artist": "Eagles"
+  },
+  {
+    "id": 31,
+    "audioPath": "/songs/song31.mp3",
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen"
+  },
+  {
+    "id": 32,
+    "audioPath": "/songs/song32.mp3",
+    "title": "Billie Jean",
+    "artist": "Michael Jackson"
+  },
+  {
+    "id": 33,
+    "audioPath": "/songs/song33.mp3",
+    "title": "Numb",
+    "artist": "Linkin Park"
+  },
+  {
+    "id": 34,
+    "audioPath": "/songs/song34.mp3",
+    "title": "Believer",
+    "artist": "Imagine Dragons"
+  },
+  {
+    "id": 35,
+    "audioPath": "/songs/song35.mp3",
+    "title": "Let Me Love You",
+    "artist": "DJ Snake ft. Justin Bieber"
+  },
+  {
+    "id": 36,
+    "audioPath": "/songs/song36.mp3",
+    "title": "Sorry",
+    "artist": "Justin Bieber"
+  },
+  {
+    "id": 37,
+    "audioPath": "/songs/song37.mp3",
+    "title": "Closer",
+    "artist": "The Chainsmokers ft. Halsey"
+  },
+  {
+    "id": 38,
+    "audioPath": "/songs/song38.mp3",
+    "title": "What Makes You Beautiful",
+    "artist": "One Direction"
+  },
+  {
+    "id": 39,
+    "audioPath": "/songs/song39.mp3",
+    "title": "My Heart Will Go On",
+    "artist": "Céline Dion"
+  },
+  {
+    "id": 40,
+    "audioPath": "/songs/song40.mp3",
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses"
+  },
+  {
+    "id": 41,
+    "audioPath": "/songs/song41.mp3",
+    "title": "Kar Gayi Chull",
+    "artist": "Badshah, Neha Kakkar, Benny Dayal"
+  },
+  {
+    "id": 42,
+    "audioPath": "/songs/song42.mp3",
+    "title": "Dil Dhadakne Do (Title Track)",
+    "artist": "Priyanka Chopra, Farhan Akhtar"
+  },
+  {
+    "id": 43,
+    "audioPath": "/songs/song43.mp3",
+    "title": "Aankh Marey",
+    "artist": "Neha Kakkar, Mika Singh, Kumar Sanu"
+  },
+  {
+    "id": 44,
+    "audioPath": "/songs/song44.mp3",
+    "title": "Apna Bana Le",
+    "artist": "Arijit Singh"
+  },
+  {
+    "id": 45,
+    "audioPath": "/songs/song45.mp3",
+    "title": "Kala Chashma",
+    "artist": "Amar Arshi, Badshah, Neha Kakkar"
+  },
+  {
+    "id": 46,
+    "audioPath": "/songs/song46.mp3",
+    "title": "Love Me Like You Do",
+    "artist": "Ellie Goulding"
+  },
+  {
+    "id": 47,
+    "audioPath": "/songs/song47.mp3",
+    "title": "Perfect",
+    "artist": "Ed Sheeran"
+  },
+  {
+    "id": 48,
+    "audioPath": "/songs/song48.mp3",
+    "title": "Best Time",
+    "artist": "Brent Faiyaz"
+  },
+  {
+    "id": 49,
+    "audioPath": "/songs/song49.mp3",
+    "title": "Attention",
+    "artist": "Charlie Puth"
+  },
+  {
+    "id": 50,
+    "audioPath": "/songs/song50.mp3",
+    "title": "I Just Can't Stop Loving You",
+    "artist": "Michael Jackson, Siedah Garrett"
+  }
 ]
