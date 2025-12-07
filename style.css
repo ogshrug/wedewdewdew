@@ -41,15 +41,44 @@ h1 {
     display: flex;
     gap: 0.5em;
     width: 100%;
+    position: relative;
 }
 
-#song-dropdown {
+.search-container {
+    width: 100%;
+    position: relative;
+}
+
+#song-search {
     width: 100%;
     padding: 0.8em;
     border-radius: 5px;
+    box-sizing: border-box;
     border: 1px solid #535353;
     background-color: #282828;
     color: #FFFFFF;
+}
+
+#search-results {
+    position: absolute;
+    width: 100%;
+    background-color: #282828;
+    border: 1px solid #535353;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.result-item {
+    padding: 0.8em;
+    cursor: pointer;
+    text-align: left;
+}
+
+.result-item:hover {
+    background-color: #535353;
 }
 
 button {
