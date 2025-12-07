@@ -19,7 +19,10 @@
             <button id="play-button">Play</button>
             <button id="skip-button">Skip (+2s)</button>
             <div class="guess-section">
-                <select id="song-dropdown"></select>
+                <div class="search-container">
+                    <input type="text" id="song-search" placeholder="Type to search for a song...">
+                    <div id="search-results"></div>
+                </div>
                 <button id="submit-guess">Submit Guess</button>
             </div>
             <div id="feedback"></div>

@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const snippetDurationElement = document.getElementById('snippet-duration');
     const playButton = document.getElementById('play-button');
     const skipButton = document.getElementById('skip-button');
-    const songDropdown = document.getElementById('song-dropdown');
+    const songSearchInput = document.getElementById('song-search');
+    const searchResultsContainer = document.getElementById('search-results');
     const submitGuessButton = document.getElementById('submit-guess');
     const feedbackElement = document.getElementById('feedback');
     const nextRoundButton = document.getElementById('next-round');
@@ -21,27 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let skipsUsed = 0;
     let snippetDuration = 3;
     let audioTimeout = null;
+    let selectedSongId = null;
 
     // --- Game Initialization ---
     async function initializeGame() {
         try {
             const response = await fetch('songs.json');
             songsData = await response.json();
-            populateDropdown();
             loadRound();
         } catch (error) {
             console.error('Error loading song data:', error);
             feedbackElement.textContent = 'Failed to load song data. Please try refreshing the page.';
         }
-    }
-
-    function populateDropdown() {
-        songsData.forEach(song => {
-            const option = document.createElement('option');
-            option.value = song.id;
-            option.textContent = `${song.title} - ${song.artist}`;
-            songDropdown.appendChild(option);
-        });
     }
 
     // --- Round Management ---
@@ -51,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Select a random, unplayed song
         let randomSong;
         do {
             randomSong = songsData[Math.floor(Math.random() * songsData.length)];
@@ -61,37 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
         playedSongIds.add(currentSong.id);
         audioPlayer.src = currentSong.audioPath;
 
-        // Reset state for the new round
         skipsUsed = 0;
         snippetDuration = 3;
+        selectedSongId = null;
 
-        // Update UI
         roundElement.textContent = round;
         skipsUsedElement.textContent = skipsUsed;
         snippetDurationElement.textContent = snippetDuration;
         feedbackElement.textContent = '';
         feedbackElement.className = '';
-        songDropdown.disabled = false;
-        submitGuessButton.disabled = false;
+        songSearchInput.value = '';
+        songSearchInput.disabled = false;
+        submitGuessButton.disabled = true; // Disable by default
         skipButton.disabled = false;
         nextRoundButton.style.display = 'none';
     }
 
     // --- Gameplay Actions ---
     function playSnippet() {
-        // Stop any previously playing snippet
-        if (audioTimeout) {
-            clearTimeout(audioTimeout);
-        }
+        if (audioTimeout) clearTimeout(audioTimeout);
         audioPlayer.pause();
         audioPlayer.currentTime = 0;
-
         audioPlayer.play();
-
-        // Stop the audio after the current snippet duration
-        audioTimeout = setTimeout(() => {
-            audioPlayer.pause();
-        }, snippetDuration * 1000);
+        audioTimeout = setTimeout(() => audioPlayer.pause(), snippetDuration * 1000);
     }
 
     function useSkip() {
@@ -100,25 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
             snippetDuration += 2;
             skipsUsedElement.textContent = skipsUsed;
             snippetDurationElement.textContent = snippetDuration;
-
-            if (skipsUsed === 6) {
-                skipButton.disabled = true;
-            }
+            if (skipsUsed === 6) skipButton.disabled = true;
         }
     }
 
     function handleGuess() {
-        // Disable controls after guess
-        songDropdown.disabled = true;
+        songSearchInput.disabled = true;
         submitGuessButton.disabled = true;
         skipButton.disabled = true;
-        if (audioTimeout) {
-            clearTimeout(audioTimeout);
-        }
+        if (audioTimeout) clearTimeout(audioTimeout);
         audioPlayer.pause();
+        searchResultsContainer.style.display = 'none';
 
-        // Check the answer and calculate score
-        const selectedSongId = parseInt(songDropdown.value, 10);
         if (selectedSongId === currentSong.id) {
             const points = 10 - (skipsUsed * 2);
             score += points;
@@ -133,12 +109,54 @@ document.addEventListener('DOMContentLoaded', () => {
         nextRoundButton.style.display = 'block';
     }
 
+    // --- Search Functionality ---
+    function filterSongs(searchText) {
+        selectedSongId = null;
+        submitGuessButton.disabled = true; // Disable while searching
+        if (!searchText) {
+            searchResultsContainer.innerHTML = '';
+            searchResultsContainer.style.display = 'none';
+            return;
+        }
+        const lowerCaseSearchText = searchText.toLowerCase();
+        const filteredSongs = songsData.filter(song =>
+            song.title.toLowerCase().includes(lowerCaseSearchText) ||
+            song.artist.toLowerCase().includes(lowerCaseSearchText)
+        );
+        renderSearchResults(filteredSongs);
+    }
+
+    function renderSearchResults(filteredSongs) {
+        searchResultsContainer.innerHTML = '';
+        if (filteredSongs.length > 0) {
+            filteredSongs.forEach(song => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                resultItem.textContent = `${song.title} - ${song.artist}`;
+                resultItem.dataset.songId = song.id;
+                resultItem.addEventListener('click', () => selectSong(song));
+                searchResultsContainer.appendChild(resultItem);
+            });
+            searchResultsContainer.style.display = 'block';
+        } else {
+            searchResultsContainer.style.display = 'none';
+        }
+    }
+
+    function selectSong(song) {
+        selectedSongId = song.id;
+        songSearchInput.value = `${song.title} - ${song.artist}`;
+        searchResultsContainer.innerHTML = '';
+        searchResultsContainer.style.display = 'none';
+        submitGuessButton.disabled = false; // Enable after selection
+    }
+
     function endGame() {
         feedbackElement.textContent = `Game Over! Your final score is ${score}.`;
         feedbackElement.className = 'correct';
         playButton.disabled = true;
         skipButton.disabled = true;
-        songDropdown.disabled = true;
+        songSearchInput.disabled = true;
         submitGuessButton.disabled = true;
         nextRoundButton.style.display = 'none';
     }
@@ -151,7 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
         round++;
         loadRound();
     });
+    songSearchInput.addEventListener('input', () => filterSongs(songSearchInput.value));
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-container')) {
+            searchResultsContainer.style.display = 'none';
+        }
+    });
 
-    // --- Start the game ---
     initializeGame();
 });
