@@ -191,6 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loadRound();
     });
     songSearchInput.addEventListener('input', () => filterSongs(songSearchInput.value));
+    songSearchInput.addEventListener('click', () => {
+        if (songSearchInput.value === '') {
+            renderSearchResults(songsData);
+        }
+    });
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.search-container')) {
             searchResultsContainer.style.display = 'none';
