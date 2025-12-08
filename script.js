@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeDisplay = document.getElementById('time-display');
 
     // Game State
+    let skipsAllowed = 3;
+    let endRound = 5;
     let score = 0;
     let round = 1;
     let songsData = [];
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Round Management ---
     function loadRound() {
-        if (playedSongIds.size === songsData.length) {
+        if (round === endRound + 1) {
             endGame();
             return;
         }
@@ -82,12 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function useSkip() {
-        if (skipsUsed < 6) {
+        if (skipsUsed < skipsAllowed) {
             skipsUsed++;
             snippetDuration += 2;
             skipsUsedElement.textContent = skipsUsed;
             snippetDurationElement.textContent = snippetDuration;
-            if (skipsUsed === 6) skipButton.disabled = true;
+            if (skipsUsed === skipsAllowed) skipButton.disabled = true;
         }
     }
 
