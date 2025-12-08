@@ -145,3 +145,16 @@ button:disabled {
     font-size: 0.9em;
     color: #B3B3B3;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #282828;
+    color: #636363;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
