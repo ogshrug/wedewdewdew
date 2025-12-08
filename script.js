@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let audioTimeout = null;
     let selectedSongId = null;
 
-    // --- Game Initialization ---
+    //Game Initialization
     async function initializeGame() {
         try {
             const response = await fetch('songs.json');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Round Management ---
+    //Round Management
     function loadRound() {
         if (round === endRound + 1) {
             endGame();
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextRoundButton.style.display = 'none';
     }
 
-    // --- Gameplay Actions ---
+    //Gameplay
     function playSnippet() {
         if (audioTimeout) clearTimeout(audioTimeout);
         audioPlayer.pause();
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextRoundButton.style.display = 'block';
     }
 
-    // --- Search Functionality ---
+    //Search Functionality
     function filterSongs(searchText) {
         selectedSongId = null;
         submitGuessButton.disabled = true; // Disable while searching
