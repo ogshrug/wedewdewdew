@@ -124,3 +124,24 @@ button:disabled {
     color: #FF6961; /* A reddish color for incorrect answers */
     font-weight: bold;
 }
+
+#progress-container {
+    width: 100%;
+    height: 4px;
+    background-color: #535353;
+    border-radius: 2px;
+    margin-top: 1em;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: #1DB954;
+    border-radius: 2px;
+    width: 0%;
+}
+
+#time-display {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #B3B3B3;
+}

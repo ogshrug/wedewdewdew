@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedbackElement = document.getElementById('feedback');
     const nextRoundButton = document.getElementById('next-round');
     const audioPlayer = document.getElementById('audio-player');
+    const progressBar = document.getElementById('progress-bar');
+    const timeDisplay = document.getElementById('time-display');
 
     // Game State
     let score = 0;
@@ -62,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         feedbackElement.textContent = '';
         feedbackElement.className = '';
         songSearchInput.value = '';
+        progressBar.style.width = '0%';
+        timeDisplay.textContent = '0:00 / 0:00';
         songSearchInput.disabled = false;
         submitGuessButton.disabled = true; // Disable by default
         skipButton.disabled = false;
@@ -161,9 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
         nextRoundButton.style.display = 'none';
     }
 
+    // --- Audio Player Updates ---
+    function updateProgressBar() {
+        const percentage = (audioPlayer.currentTime / snippetDuration) * 100;
+        progressBar.style.width = `${percentage}%`;
+        timeDisplay.textContent = `${formatTime(audioPlayer.currentTime)} / ${formatTime(snippetDuration)}`;
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
     // --- Event Listeners ---
     playButton.addEventListener('click', playSnippet);
     skipButton.addEventListener('click', useSkip);
+    audioPlayer.addEventListener('timeupdate', updateProgressBar);
+    audioPlayer.addEventListener('loadedmetadata', () => {
+        timeDisplay.textContent = `0:00 / ${formatTime(snippetDuration)}`;
+    });
     submitGuessButton.addEventListener('click', handleGuess);
     nextRoundButton.addEventListener('click', () => {
         round++;
