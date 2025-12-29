@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeRemaining = 480; // 8 minutes in seconds
 
     // --- Airtable Configuration ---
-    const AIRTABLE_API_KEY = 'YOUR_AIRTABLE_API_KEY'; // Replace with your API key
-    const AIRTABLE_BASE_ID = 'YOUR_AIRTABLE_BASE_ID'; // Replace with your Base ID
-    const AIRTABLE_TABLE_NAME = 'YOUR_AIRTABLE_TABLE_NAME'; // Replace with your Table Name
+    const AIRTABLE_API_KEY = 'patIIYIBbMt5lNYDd.c19a5edfbbd5081e586fd2f5e6d4ff23d0f10619cfd873d3547442615ea47cfe'; // Replace with your API key
+    const AIRTABLE_BASE_ID = 'appSI9kvAMbQQf3Nc'; // Replace with your Base ID
+    const AIRTABLE_TABLE_NAME = 'Scores'; // Replace with your Table Name
 
     //Game Initialization
     async function initializeGame() {
