@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
+    const loginOverlay = document.getElementById('login-overlay');
+    const usernameInput = document.getElementById('username-input');
+    const startGameButton = document.getElementById('start-game-button');
+    const timerElement = document.getElementById('timer');
     const scoreElement = document.getElementById('score');
     const roundElement = document.getElementById('round');
     const skipsUsedElement = document.getElementById('skips-used');
@@ -11,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitGuessButton = document.getElementById('submit-guess');
     const feedbackElement = document.getElementById('feedback');
     const nextRoundButton = document.getElementById('next-round');
+    const submitScoreButton = document.getElementById('submit-score-button');
     const audioPlayer = document.getElementById('audio-player');
     const progressBar = document.getElementById('progress-bar');
     const timeDisplay = document.getElementById('time-display');
@@ -27,6 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let snippetDuration = 3;
     let audioTimeout = null;
     let selectedSongId = null;
+    let username = '';
+    let timerInterval = null;
+    let timeRemaining = 480; // 8 minutes in seconds
+
+    // --- Airtable Configuration ---
+    const AIRTABLE_API_KEY = 'YOUR_AIRTABLE_API_KEY'; // Replace with your API key
+    const AIRTABLE_BASE_ID = 'YOUR_AIRTABLE_BASE_ID'; // Replace with your Base ID
+    const AIRTABLE_TABLE_NAME = 'YOUR_AIRTABLE_TABLE_NAME'; // Replace with your Table Name
 
     //Game Initialization
     async function initializeGame() {
@@ -34,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('songs.json');
             songsData = await response.json();
             loadRound();
+            startTimer();
         } catch (error) {
             console.error('Error loading song data:', error);
             feedbackElement.textContent = 'Failed to load song data. Please try refreshing the page.';
@@ -157,14 +171,20 @@ document.addEventListener('DOMContentLoaded', () => {
         submitGuessButton.disabled = false; // Enable after selection
     }
 
-    function endGame() {
-        feedbackElement.textContent = `Game Over! Your final score is ${score}.`;
+    function endGame(force = false) {
+        if (force) {
+            feedbackElement.textContent = "Time's up! Your final score is " + score + ".";
+        } else {
+            feedbackElement.textContent = `Game Over! Your final score is ${score}.`;
+        }
+        clearInterval(timerInterval);
         feedbackElement.className = 'correct';
         playButton.disabled = true;
         skipButton.disabled = true;
         songSearchInput.disabled = true;
         submitGuessButton.disabled = true;
         nextRoundButton.style.display = 'none';
+        submitScoreButton.style.display = 'block';
     }
 
     // --- Audio Player Updates ---
@@ -180,7 +200,70 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
+    // --- Airtable Submission ---
+    async function submitScore() {
+        const timeTaken = 480 - timeRemaining;
+        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${AIRTABLE_API_KEY}`
+                },
+                body: JSON.stringify({
+                    fields: {
+                        "Username": username,
+                        "Score": score,
+                        "Time Taken": timeTaken
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Airtable API error: ${errorData.error.message}`);
+            }
+
+            alert('Score submitted successfully!');
+            submitScoreButton.disabled = true;
+        } catch (error) {
+            console.error('Error submitting score to Airtable:', error);
+            alert('Failed to submit score. Please check the console for details.');
+        }
+    }
+
+    // --- Timer Functions ---
+    function startTimer() {
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        timeRemaining--;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            endGame(true); // Force end due to time
+        }
+    }
+
+    // --- Login ---
+    function startGame() {
+        username = usernameInput.value.trim();
+        if (username === '') {
+            alert('Please enter a username.');
+            return;
+        }
+        loginOverlay.style.display = 'none';
+        initializeGame();
+    }
+
     // --- Event Listeners ---
+    startGameButton.addEventListener('click', startGame);
     playButton.addEventListener('click', playSnippet);
     skipButton.addEventListener('click', useSkip);
     audioPlayer.addEventListener('timeupdate', updateProgressBar);
@@ -192,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         round++;
         loadRound();
     });
+    submitScoreButton.addEventListener('click', submitScore);
     songSearchInput.addEventListener('input', () => filterSongs(songSearchInput.value));
     songSearchInput.addEventListener('click', () => {
         if (songSearchInput.value === '') {
@@ -204,5 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    initializeGame();
+    // Don't initialize game immediately, wait for login
+    // initializeGame();
 });
