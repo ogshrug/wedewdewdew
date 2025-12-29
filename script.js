@@ -36,10 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval = null;
     let timeRemaining = 480; // 8 minutes in seconds
 
-    // --- Airtable Configuration ---
-    const AIRTABLE_API_KEY = 'patHBcPNvarvQIUJN.d9e6cbf657bd5f2304276e3520726cbf7c4329fb6cc7850619b58a6689cdd7ed'; // Replace with your API key
-    const AIRTABLE_BASE_ID = 'appSI9kvAMbQQf3Nc'; // Replace with your Base ID
-    const AIRTABLE_TABLE_NAME = 'Scores'; // Replace with your Table Name
 
     //Game Initialization
     async function initializeGame() {
@@ -200,36 +196,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // --- Airtable Submission ---
+    // --- Score Submission ---
     async function submitScore() {
         const timeTaken = 480 - timeRemaining;
-        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
         try {
-            const response = await fetch(url, {
+            const response = await fetch('/api/submit-score', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${AIRTABLE_API_KEY}`
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    fields: {
-                        "Username": username,
-                        "Score": score,
-                        "Time Taken": timeTaken
-                    }
+                    username: username,
+                    score: score,
+                    timeTaken: timeTaken
                 })
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`Airtable API error: ${errorData.error.message}`);
+                throw new Error('Failed to submit score.');
             }
 
             alert('Score submitted successfully!');
             submitScoreButton.disabled = true;
         } catch (error) {
-            console.error('Error submitting score to Airtable:', error);
+            console.error('Error submitting score:', error);
             alert('Failed to submit score. Please check the console for details.');
         }
     }
