@@ -80,11 +80,55 @@ h1 {
     font-size: 1em;
 }
 
+.game-and-volume-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
 .game-area {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
+    width: 100%;
+}
+
+.volume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 150px;
+    background: #535353;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #1DB954;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #1DB954;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .guess-section {

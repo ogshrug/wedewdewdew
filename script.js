@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.getElementById('audio-player');
     const progressBar = document.getElementById('progress-bar');
     const timeDisplay = document.getElementById('time-display');
+    const volumeSlider = document.getElementById('volume-slider');
 
     // Game State
     let skipsAllowed = 3;
@@ -226,6 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Event Listeners ---
+    volumeSlider.addEventListener('input', () => {
+        audioPlayer.volume = volumeSlider.value;
+    });
     startGameButton.addEventListener('click', startGame);
     playButton.addEventListener('click', playSnippet);
     skipButton.addEventListener('click', useSkip);
