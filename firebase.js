@@ -12,9 +12,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+// --- Firebase Username Check ---
+async function isUsernameTaken(username) {
+    try {
+        const querySnapshot = await db.collection("Scores").where("Username", "==", username).get();
+        return !querySnapshot.empty;
+    } catch (error) {
+        console.error('Error checking username:', error);
+        return true; // Assume username is taken to prevent issues
+    }
+}
+
 // --- Firebase Submission ---
 async function submitScore(username, score, timeTaken) {
     try {
+        const usernameTaken = await isUsernameTaken(username);
+        if (usernameTaken) {
+            alert('This username is already taken. Please choose another one.');
+            return;
+        }
+
         await db.collection("Scores").add({
             Username: username,
             Score: score,
