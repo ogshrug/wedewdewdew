@@ -25,24 +25,29 @@
             <p>Duration: <span id="snippet-duration">3</span>s |</p>
             <p>Total Rounds: <span id="total-rounds">5</span> |</p>
         </div>
-        <div class="game-area">
-            <center><img id="album-art" src="./imga.png" alt="Album Art" style="width:200px; height:200px;"></center>
-            <button id="play-button">Play</button>
-            <div id="progress-container">
-                <div id="progress-bar"></div>
-            </div>
-            <div id="time-display">0:00 / 0:00</div>
-            <button id="skip-button">Skip (+2s)</button>
-            <div class="guess-section">
-                <div class="search-container">
-                    <input type="text" id="song-search" placeholder="Type to search for a song...">
-                    <div id="search-results"></div>
+        <div class="game-and-volume-wrapper">
+            <div class="game-area">
+                <center><img id="album-art" src="./imga.png" alt="Album Art" style="width:200px; height:200px;"></center>
+                <button id="play-button">Play</button>
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
                 </div>
-                <button id="submit-guess">Submit Guess</button>
+                <div id="time-display">0:00 / 0:00</div>
+                <button id="skip-button">Skip (+2s)</button>
+                <div class="guess-section">
+                    <div class="search-container">
+                        <input type="text" id="song-search" placeholder="Type to search for a song...">
+                        <div id="search-results"></div>
+                    </div>
+                    <button id="submit-guess">Submit Guess</button>
+                </div>
+                <div id="feedback"></div>
+                <button id="next-round" style="display: none;">Next Round</button>
+                <button id="submit-score-button" style="display: none;">Submit Score</button>
             </div>
-            <div id="feedback"></div>
-            <button id="next-round" style="display: none;">Next Round</button>
-            <button id="submit-score-button" style="display: none;">Submit Score</button>
+            <div class="volume-container">
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" orient="vertical">
+            </div>
         </div>
         <audio id="audio-player" style="display: none;"></audio>
     </div>
