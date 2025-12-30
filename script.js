@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const timeDisplay = document.getElementById('time-display');
     const volumeSlider = document.getElementById('volume-slider');
+    const volumePercentage = document.getElementById('volume-percentage');
 
     // Game State
     let skipsAllowed = 3;
@@ -228,7 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Event Listeners ---
     volumeSlider.addEventListener('input', () => {
+        const percentage = Math.round(volumeSlider.value * 100);
         audioPlayer.volume = volumeSlider.value;
+        volumePercentage.textContent = `${percentage}%`;
     });
     startGameButton.addEventListener('click', startGame);
     playButton.addEventListener('click', playSnippet);
