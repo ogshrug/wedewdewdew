@@ -217,12 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Login ---
-    function startGame() {
+    async function startGame() {
         username = usernameInput.value.trim();
         if (username === '') {
             alert('Please enter a username.');
             return;
         }
+
+        const usernameTaken = await isUsernameTaken(username);
+        if (usernameTaken) {
+            alert('This username is already taken. Please choose another one.');
+            return;
+        }
+
         loginOverlay.style.display = 'none';
         initializeGame();
     }
